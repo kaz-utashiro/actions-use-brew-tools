@@ -14,7 +14,7 @@ jobs:
     outputs:
       brew-version: ${{ steps.brew-version.outputs.version }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - id: brew-version
         run: |
           version="$(brew --version | sed -n 1p)"
@@ -31,7 +31,7 @@ jobs:
     needs: initial
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - id: check
         run: |
           : check cache status
