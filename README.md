@@ -2,7 +2,7 @@
 
 ![actions-use-homebrew-tools](https://github.com/tecolicom/actions-use-homebrew-tools/actions/workflows/test.yml/badge.svg)
 
-This GitHub action isntall homebrew packages and cache them for later
+This GitHub action installs homebrew packages and cache them for later
 use.  When executed next time with same package list, and any other
 environment are not changed, installed files are extracted from the
 cached archive.
