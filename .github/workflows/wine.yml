@@ -1,4 +1,4 @@
-name: test
+name: wine-stable install test
 
 on:
   push:
@@ -24,8 +24,12 @@ jobs:
         with:
           cache: workflow
           tools: wine-stable
-      - run: wine --version
-      - run: test "${{ steps.action.outputs.cache-hit }}" != true
+      - id: test
+        run: |
+          echo $PATH
+          which wine
+          wine --version
+          test "${{ steps.action.outputs.cache-hit }}" != true
 
   cached:
     needs: initial
@@ -53,5 +57,7 @@ jobs:
       - id: test
         if: steps.check.outputs.continue == 'yes'
         run: |
+          echo $PATH
+          which wine
           wine --version
           test "${{ steps.action.outputs.cache-hit }}" == true
