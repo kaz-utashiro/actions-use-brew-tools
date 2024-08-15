@@ -24,15 +24,23 @@ Output is same as
 
 ```yaml
 # inputs:
-#   tools: { required: true,  type: string }
-#   cache: { required: false, type: string, default: yes }
-#   key:   { required: false, type: string }
+#   tools:   { required: true,  type: string }
+#   key:     { required: false, type: string }
+#   path:    { required: false, type: string }
+#   cache:   { required: false, type: string, default: yes }
+#   verbose: { required: false, type: boolean, default: false }
 
 - uses: tecolicom/actions-use-homebrew-tools@v1
   with:
 
     # homebrew packages
     tools: ''
+
+    # Additional cache key
+    key: ''
+
+    # Additional path required other than $(brew --prefix)
+    path: ''
 
     # Cache strategy
     #
@@ -42,8 +50,8 @@ Output is same as
     #
     cache: yes
 
-    # Additional cache key
-    key: ''
+    # verbose: show verbose output
+    verbose: false
 ```
 
 ## Example

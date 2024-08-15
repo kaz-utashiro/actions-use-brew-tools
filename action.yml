@@ -6,9 +6,11 @@ branding:
   icon:  type
 
 inputs:
-  tools: { required: false, type: string }
-  cache: { required: false, type: string, default: yes }
-  key:   { required: false, type: string }
+  tools:   { required: false, type: string }
+  key:     { required: false, type: string }
+  path:    { required: false, type: string }
+  cache:   { required: false, type: string, default: yes }
+  verbose: { required: false, type: boolean, default: false }
 
 outputs:
   cache-hit:
@@ -36,7 +38,8 @@ runs:
     - id: update
       uses: tecolicom/actions-install-and-cache@v1
       with:
-        run:    ${{ steps.setup.outputs.command }} ${{ inputs.tools }}
-        path:   ${{ steps.setup.outputs.prefix }}
-        cache:  ${{ inputs.cache }}
-        key:    ${{ steps.setup.outputs.key }}
+        run:     ${{ steps.setup.outputs.command }} ${{ inputs.tools }}
+        path:    ${{ steps.setup.outputs.prefix }} ${{ inputs.path }}
+        key:     ${{ steps.setup.outputs.key }}
+        cache:   ${{ inputs.cache }}
+        verbose: ${{ inputs.verbose }}
