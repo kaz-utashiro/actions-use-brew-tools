@@ -50,7 +50,8 @@ jobs:
         with:
           cache: workflow
           tools: wine-stable
-      - run: |
+      - id: test
         if: steps.check.outputs.continue == 'yes'
+        run: |
           wine --version
           test "${{ steps.action.outputs.cache-hit }}" == true

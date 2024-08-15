@@ -50,7 +50,8 @@ jobs:
         with:
           cache: workflow
           tools: rcs
-      - run: |
+      - id: test
         if: steps.check.outputs.continue == 'yes'
+        run: |
           rcs --version
           test "${{ steps.action.outputs.cache-hit }}" == true
