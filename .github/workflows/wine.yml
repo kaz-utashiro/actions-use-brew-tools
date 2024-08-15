@@ -24,6 +24,7 @@ jobs:
         with:
           cache: workflow
           tools: wine-stable
+          verbose: true
       - id: test
         run: |
           echo $PATH
@@ -54,6 +55,7 @@ jobs:
         with:
           cache: workflow
           tools: wine-stable
+          verbose: true
       - id: test
         if: steps.check.outputs.continue == 'yes'
         run: |
