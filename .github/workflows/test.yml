@@ -41,7 +41,7 @@ jobs:
           then
               echo "continue=yes" >> $GITHUB_OUTPUT
           else
-              error="Test does not make sence ($initial != $current)"
+              error="Test does not make sense ($initial != $current)"
               echo "::warning ::$error"
           fi
       - id: action
