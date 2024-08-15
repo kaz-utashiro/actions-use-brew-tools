@@ -1,0 +1,56 @@
+name: test
+
+on:
+  push:
+    paths-ignore:
+      - '**.md'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+
+  initial:
+    runs-on: macos-latest
+    outputs:
+      brew-version: ${{ steps.brew-version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: brew-version
+        run: |
+          version="$(brew --version | sed -n 1p)"
+          echo "version=$version" >> $GITHUB_OUTPUT
+      - uses: ./
+        id: action
+        with:
+          cache: workflow
+          tools: wine-stable
+      - run: wine --version
+      - run: test "${{ steps.action.outputs.cache-hit }}" != true
+
+  cached:
+    needs: initial
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: check
+        run: |
+          : check cache status
+          initial="${{ needs.initial.outputs.brew-version }}"
+          current="$(brew --version | sed -n 1p)"
+          if [ "$initial" = "$current" ]
+          then
+              echo "continue=yes" >> $GITHUB_OUTPUT
+          else
+              error="Test does not make sense ($initial != $current)"
+              echo "::warning ::$error"
+          fi
+      - id: action
+        if: steps.check.outputs.continue == 'yes'
+        uses: ./
+        with:
+          cache: workflow
+          tools: wine-stable
+      - run: |
+        if: steps.check.outputs.continue == 'yes'
+          wine --version
+          test "${{ steps.action.outputs.cache-hit }}" == true
