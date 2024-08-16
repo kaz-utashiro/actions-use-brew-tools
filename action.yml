@@ -11,7 +11,6 @@ inputs:
   path:    { required: false, type: string }
   cache:   { required: false, type: string, default: yes }
   sudo:    { required: false, type: boolean, default: false }
-  sudo_ex: { required: false, type: boolean, default: true }
   verbose: { required: false, type: boolean, default: false }
 
 outputs:
@@ -45,5 +44,4 @@ runs:
         key:     ${{ steps.setup.outputs.key }}
         cache:   ${{ inputs.cache }}
         sudo:    ${{ inputs.sudo }}
-        sudo_ex: ${{ inputs.sudo_ex }}
         verbose: ${{ inputs.verbose }}
