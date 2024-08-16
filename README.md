@@ -25,6 +25,9 @@ add `/Applications` and/or `/Library` directories.
 Output is same as
 [`@actions/cache`](https://github.com/actions/cache).
 
+Thanks to the provided [typings](action-types.yml), it is possible to use this action in a type-safe way using
+https://github.com/typesafegithub/github-workflows-kt which allows writing workflow files using a type-safe Kotlin DSL.
+
 ## Usage
 
 ```yaml

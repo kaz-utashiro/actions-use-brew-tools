@@ -1,0 +1,30 @@
+# See https://github.com/typesafegithub/github-actions-typing/
+inputs:
+  tools:
+    type: list
+    separator: ' '
+    list-item:
+      type: string
+
+  key:
+    type: string
+
+  path:
+    type: list
+    separator: ' '
+    list-item:
+      type: string
+
+  cache:
+    type: enum
+    allowed-values:
+      - yes
+      - no
+      - workflow
+
+  verbose:
+    type: boolean
+
+outputs:
+  cache-hit:
+    type: boolean
