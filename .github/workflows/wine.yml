@@ -25,7 +25,6 @@ jobs:
           cache: workflow
           tools: wine-stable
           path: /Applications /Library
-          sudo_ex: true
           verbose: true
       - id: test
         run: |
@@ -58,7 +57,6 @@ jobs:
           cache: workflow
           tools: wine-stable
           path: /Applications /Library
-          sudo_ex: true
           verbose: true
       - id: test
         if: steps.check.outputs.continue == 'yes'
