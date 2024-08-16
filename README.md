@@ -17,6 +17,10 @@ Installed files are taken by comparing directory before and after
 installation.  So it takes time to find them if many files are already
 installed before command execution.
 
+By default, only files under the directory returned by `brew --prefix`
+will be archived.  If the `brew` command installs files in other
+directories, specify them with the `path` parameter.
+
 Output is same as
 [`@actions/cache`](https://github.com/actions/cache).
 
