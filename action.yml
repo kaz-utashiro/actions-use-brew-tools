@@ -11,6 +11,7 @@ inputs:
   path:    { required: false, type: string }
   cache:   { required: false, type: string, default: yes }
   sudo:    { required: false, type: boolean, default: false }
+  sudo_ex: { required: false, type: boolean, default: false }
   verbose: { required: false, type: boolean, default: false }
 
 outputs:
@@ -37,11 +38,12 @@ runs:
         END
 
     - id: update
-      uses: tecolicom/actions-install-and-cache@v1
+      uses: tecolicom/actions-install-and-cache@v1.1.4
       with:
         run:     ${{ steps.setup.outputs.command }} ${{ inputs.tools }}
         path:    ${{ steps.setup.outputs.prefix }} ${{ inputs.path }}
         key:     ${{ steps.setup.outputs.key }}
         cache:   ${{ inputs.cache }}
         sudo:    ${{ inputs.sudo }}
+        sudo_ex: ${{ inputs.sudo_ex }}
         verbose: ${{ inputs.verbose }}
