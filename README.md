@@ -19,7 +19,8 @@ installed before command execution.
 
 By default, only files under the directory returned by `brew --prefix`
 will be archived.  If the `brew` command installs files in other
-directories, specify them with the `path` parameter.
+directories, specify them with the `path` parameter.  You may need to
+add `/Applications` and/or `/Library` directories.
 
 Output is same as
 [`@actions/cache`](https://github.com/actions/cache).

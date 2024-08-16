@@ -10,7 +10,6 @@ inputs:
   key:     { required: false, type: string }
   path:    { required: false, type: string }
   cache:   { required: false, type: string, default: yes }
-  sudo:    { required: false, type: boolean, default: false }
   verbose: { required: false, type: boolean, default: false }
 
 outputs:
@@ -43,5 +42,4 @@ runs:
         path:    ${{ steps.setup.outputs.prefix }} ${{ inputs.path }}
         key:     ${{ steps.setup.outputs.key }}
         cache:   ${{ inputs.cache }}
-        sudo:    ${{ inputs.sudo }}
         verbose: ${{ inputs.verbose }}
