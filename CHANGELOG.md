@@ -1,3 +1,7 @@
+## v1.3
+
+- always archive with the root privilege
+
 ## v1.1
 
 - Version 1.1
