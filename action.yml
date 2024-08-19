@@ -36,7 +36,7 @@ runs:
         END
 
     - id: update
-      uses: tecolicom/actions-install-and-cache@v1.1.4
+      uses: tecolicom/actions-install-and-cache@v1
       with:
         run:     ${{ steps.setup.outputs.command }} ${{ inputs.tools }}
         path:    ${{ steps.setup.outputs.prefix }} ${{ inputs.path }}
